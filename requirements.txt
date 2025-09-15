@@ -1,0 +1,13 @@
+Flask==2.3.3
+Flask-SocketIO==5.3.6
+eventlet==0.36.1
+Flask-Login==0.6.3
+Werkzeug==2.3.7
+Flask-SQLAlchemy==3.0.5
+PyMySQL==1.1.0
+
+# Optional (if using MySQL with MySQLclient instead of PyMySQL)
+mysqlclient==2.2.4
+
+# For password hashing (Werkzeug includes this, but you can also use bcrypt if needed)
+bcrypt==4.1.2
