@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container-grid">
+    <section class="card">
+      <h2>Users</h2>
+      <ul class="list">
+        {% for u in users %}
+        <li>
+          {{ u.username }} — {{ u.email }}
+          {% if not u.banned %}
+            <a class="btn small" href="{{ url_for('ban_user', user_id=u.id) }}">Ban</a>
+          {% else %}
+            <a class="btn small" href="{{ url_for('unban_user', user_id=u.id) }}">Unban</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

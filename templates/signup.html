@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="form-card">
+    <h2>Create account</h2>
+    <form method="POST" class="form">
+      <label for="username">Username</label>
+      <input id="username" name="username" required autocomplete="username" placeholder="e.g. alice">
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required autocomplete="new-password" placeholder="Choose a strong password">
+
+      <button class="btn primary" type="submit">Sign Up</button>
+    </form>
+
+    <p class="muted">Already have account? <a href="{{ url_for('signin') }}">Sign in</a></p>
+  </main>
+</body>
+</html>

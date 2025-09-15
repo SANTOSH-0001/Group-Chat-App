@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ room }} — Room</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"># {{ room }}</div>
+    <div class="top-actions">
+      <a class="btn" href="{{ url_for('chat_rooms') }}">Rooms</a>
+      <a class="btn secondary" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </header>
+
+  <main class="chat-shell">
+    <div id="chat-box" class="chat-box" aria-live="polite">
+      {% for msg in messages %}
+      <div id="msg_{{ msg.id }}" class="bubble {% if msg.sender_id == current_user.id %}sent{% else %}received{% endif %}" data-msg-id="{{ msg.id }}">
+        <div class="meta">{% if msg.sender_id == current_user.id %}You{% else %}{{ msg.sender.username }}{% endif %} <span class="ts">{{ msg.timestamp }}</span></div>
+        <div class="text">{{ msg.content }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="composer">
+      <label for="msg" class="sr-only">Message</label>
+      <input id="msg" placeholder="Type a message..." aria-label="Message input">
+      <button id="sendBtn" class="btn primary">Send</button>
+    </div>
+  </main>
+
+  <script src="https://cdn.socket.io/4.7.1/socket.io.min.js"></script>
+  <script>
+    const ROOM = "{{ room }}";
+    const USERNAME = "{{ username }}";
+  </script>
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>

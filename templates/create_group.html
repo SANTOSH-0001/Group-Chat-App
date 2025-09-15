@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Create Group</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="form-card">
+    <h2>Create Group</h2>
+    <form action="{{ url_for('create_group') }}" method="POST" class="form">
+      <label for="name">Group Name:</label>
+      <input id="name" name="name" required placeholder="Group name">
+
+      <label>Invite members</label>
+      <div class="user-list">
+        {% for u in users %}
+          <label><input type="checkbox" name="members" value="{{ u.id }}"> {{ u.username }}</label>
+        {% endfor %}
+      </div>
+
+      <button class="btn primary" type="submit">Create</button>
+    </form>
+
+    <a class="muted" href="{{ url_for('chat_rooms') }}">Back</a>
+  </main>
+</body>
+</html>

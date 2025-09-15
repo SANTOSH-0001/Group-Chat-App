@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Welcome — Chat App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="center-card">
+    <h1 class="brand">Chat App</h1>
+    <p class="lead">Real-time chat with rooms, private & group chats.</p>
+
+    <div class="actions">
+      <a class="btn primary" href="{{ url_for('signup') }}">Sign Up</a>
+      <a class="btn" href="{{ url_for('signin') }}">Sign In</a>
+    </div>
+
+    <footer class="muted">Built with Flask</footer>
+  </main>
+</body>
+</html>
